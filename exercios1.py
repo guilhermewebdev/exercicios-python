@@ -189,6 +189,7 @@ def exercicio9():
     inicio()
 
 def inicio():
+    # menu de seleção dos exercíos, menu de ajuda e função de sair do programa
     print('')
     print('')
     print('============ Lista de exercícios ===========')
