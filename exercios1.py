@@ -193,7 +193,7 @@ def inicio():
     print('')
     print('============ Lista de exercícios ===========')
     print('')
-    inicio = input("Digite o número do exercício q deseja ver: ")
+    inicio = input("Digite o número do exercício q deseja ver, 'ajuda' para abrir o menu de ajuda ou 'sair' para sair: ")
 
     if(inicio == "sair"):
         return 0
