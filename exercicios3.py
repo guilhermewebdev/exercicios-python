@@ -970,7 +970,7 @@ def exercicio17(num):
             print(texto)
             return 0
         except:
-            print('\n===== Erro ao montar texto! Digite novamente! =====\n')
+            print('\n===== Erro ao exibir texto! Digite novamente! =====\n')
             guia()
             return 1
 
@@ -986,112 +986,255 @@ def exercicio18(num):
     print(" Recebe valores e imprime os números primos contidos. ")
     print("")
 
+    def main():
+        # Guia a execução do programa
+
+        lista = recebe() # Armazena a lista de parâmtros informados pelo usuário
+
+        listaNumerica = confere(lista) # Envia a lista para conferir quais são núemros
+
+        listaInteira = converte(listaNumerica) # Envia os números para serem convertidos em inteiro e os armazena
+
+        listaPrimo = seleciona(listaInteira) # Envia os núemeros para serem selecionados os primos
+
+        semRepetir = tiraRepetidos(listaPrimo) # Envia os números primos para controlar os repetidos
+
+        texto = constroiTexto(semRepetir) # Envia os números primos para construir o texto de saída
+
+        print(texto) # Exibe o texto
+
+
     def recebe():
-        try:
-            numero = 0
-            x = 0
-            while(numero != ''):
-                if(x == 0):
-                    numero = input('\nDigite um parâmtro para ser conferido: ')
-                    x += 1
-                else:
-                    numero = input('\nDigite mais um')
-                numeroSeparado = separador(numero)
-                numeroConvertido = conversor(numeroSeparado)
-                lista = adiciona(numeroConvertido)
-            selecionaPrimo(lista)
-            return 0
-        except:
-            print('\n===== Erro ao capturar valores! Digite novamente! =====\n')
-            recebe()
-            return 1
+        # Recebe parâmtros informados pelo usuário
+        while True:
+            try:
+                lista = list()
+                valor = 0
+                while(valor != ''):
+                    x = 0
+                    if(x == 0):
+                        valor = input('\nDigite um parâmtro para ser conferido: ')
+                        x += 1
+                    else:
+                        valor = input('\nDigite mais um ou pressione enter para ver o resultado: ')
+                    if(valor == ''):
+                        break
+                    insere(valor, lista)
+                return lista
+            except:
+                print('\n ======== Erro ao capturar valor! =========\n'
+                      '\n =========== Digite novamente!=============\n')
 
-    def separador(numero):
+    def insere(valor, lista):
+        # Insere os valores recebidos em uma lista
         try:
-            if(numero.isdigit()):
-                return numero
-            else:
-                return 0
-        except:
-            print('\n===== Erro ao separar valores! Digite novamente! =====\n')
-            recebe()
-            return 1
-
-    def conversor(numeroSeparado):
-        try:
-            if(numeroSeparado != 0):
-                numeroConvertido = int(numeroSeparado)
-                return numeroConvertido
-            else:
-                continue
-        except:
-            print('\n===== Erro ao converter valores! Digite novamente! =====\n')
-            recebe()
-            return 1
-
-    def adiciona(numeroConvertido):
-        try:
-            lista = list
-            lista.append(numeroConvertido)
+            lista += [valor]
             return lista
         except:
-            print('\n===== Erro ao gerar lista! Digite novamente! =====\n')
+            print('\n ======== Erro ao inserir valor a lista! =========\n'
+                  '\n =========== Digite novamente!=============\n')
             recebe()
             return 1
 
-    def selecionaPrimo(lista):
+    def confere(lista):
+        # Separa as strings numéricas
+        listaNumerica = []
         try:
-            listaDePrimos = list
             for i in lista:
-                x = 0
+                if(i.isdigit()):
+                    insere(i, listaNumerica)
+            return listaNumerica
+        except:
+            print('\n ======== Erro ao conferir lista! =========\n'
+                  '\n =========== Digite novamente!=============\n')
+            main()
+            return 1
+
+    def converte(listaNumerica):
+        # Converte uma lista de strings em uma lista de valores inteiros
+        try:
+            listaInteira = []
+            for i in listaNumerica:
+                inteiro = int(i)
+                insere(inteiro, listaInteira)
+            return listaInteira
+        except:
+            print('\n ======== Erro ao converter lista! =========\n'
+                  '\n =========== Digite novamente!=============\n')
+            main()
+            return 1
+
+    def seleciona(listaInteira):
+        # Seleciona os números primos de uma lista
+        try:
+            listaPrimos = []
+            for i in listaInteira:
                 n = 0
-                while(x <= i):
-                    x += 1
-                    if(i%x == 0):
-                        n += 1
-                    if(x == i):
-                        break
-                if(n == 2):
-                    listaDePrimos.append(i)
-            constroiTexto(listaDePrimos)
-            return 0
+                x = 0
+                while(n <= i):
+                    n += 1
+                    if(i%n == 0):
+                        x += 1
+                if(x == 2):
+                    listaPrimos = insere(i, listaPrimos)
+            return listaPrimos
         except:
-            print('\n===== Erro ao gerar lista de primos! Digite novamente! =====\n')
-            recebe()
+            print('\n ======== Erro ao selecionar numeros primos! =========\n'
+                  '\n =========== Digite novamente!=============\n')
+            main()
             return 1
 
-    def constroiTexto(listaDePrimos):
+    def tiraRepetidos(listaPrimos):
+        # Verifica os números repetidos e vincula a quantidade de vezes ele é exibido
         try:
-            if(listaDePrimos == []):
-                texto = '\nA lista está vazia\n'
-            elif(len(listaDePrimos) == 1):
-                texto = '\nO número primo digitado foi o ' + str(listaDePrimos[0]) + '.\n'
-            elif(len(listaDePrimos) > 1):
+            semRepetir = {}
+            for i in listaPrimos:
+                x = 0
+                if(i not in semRepetir):
+                    for n in listaPrimos:
+                        if(i == n):
+                            x += 1
+                    semRepetir[i] = x
+            return semRepetir
+        except:
+            print('\n ======== Erro ao controlar numeros repetidos! =========\n'
+                  '\n =========== Digite novamente!=============\n')
+            main()
+            return 1
+
+    def constroiTexto(semRepetir):
+        # Constroi um texto com o resultado do programa
+        try:
+            if(len(semRepetir) == 0):
+                texto = '\nNão foi digitado nenhum número primo!\n'
+            elif(len(semRepetir) == 1):
+                if(list(semRepetir.values())[0] == 1):
+                    texto = '\nO número primo digitado foi o ' + str(list(semRepetir.keys())[0]) + '.\n'
+                else:
+                    texto = '\nO número primo digitado foi o ' + str(list(semRepetir.keys())[0]) + ' por ' + str(list(semRepetir.values())[0]) + ' vezes.\n'
+            else:
                 texto = '\nOs números primos digitados foram o '
-                for i in listaDePrimos:
-                    if(i == listaDePrimos[-2]):
-                        texto.append(str(i) + ' e o ')
-                    elif(i == listaDePrimos[-1]):
-                        texto.append(str(i) + '.\n')
+                for i, n in semRepetir.items():
+                    if(i == list(semRepetir.keys())[-1]):
+                        if(n == 1):
+                            texto += str(i) + '.\n'
+                        else:
+                            texto += str(i) + ' por ' + str(n) + ' vezes.'
+                    elif(i == list(semRepetir.keys())[-2]):
+                        if(n == 1):
+                            texto += str(i) + ' e o '
+                        else:
+                            texto += str(i) + ' por ' + str(n) + ' vezes e o '
                     else:
-                        texto = texto + str(i) + ', '
-            exibe(texto)
-            return 0
+                        if(n == 1):
+                            texto += str(i) + ', '
+                        else:
+                            texto += str(i) + ' por ' + str(n) + ' vezes, '
+            return texto
         except:
-            print('\n===== Erro ao construir texto! Digite novamente! =====\n')
-            recebe()
+            print('\n ======== Erro ao gerar texto! =========\n'
+                  '\n =========== Digite novamente!=============\n')
+            main()
             return 1
 
-    def exibe(texto):
+    main()
+
+
+
+
+def exercicio19(num):
+    print('')
+    print('')
+    print('')
+    print(" =============================== Exercício", num, "==============================")
+    print('')
+    print(" Recebe valores e imprime os números pares contidos. ")
+    print("")
+
+    def main():
+        # Guia de execução do programa
+
+        while True:
+            try:
+                # Recebe um valor informado pelo usuário e insere em uma lista
+                valor = 0
+                x = 0
+                lista = []
+                while(valor != ''):
+                    if(x == 0):
+                        valor = input('\nDigite um parâmetro para ser conferido: ')
+                        x += 1
+                    else:
+                        valor = input('\nDigite outro ou pressione enter para conferir: ')
+                    if(valor.isdigit()):
+                        lista.append(int(valor))
+                    elif(valor == ''):
+                        break
+                break
+            except:
+                print('\n====== Erro ao capturar valor! Digite novamente =========')
+                main()
+                return 1
+
         try:
-            print(texto)
-            return 0
+            # Remove os números impares da lista
+            for i in lista:
+                if(i%2 != 0):
+                    lista.remove(i)
         except:
-            print('\n===== Erro ao separar valores! Digite novamente! =====\n')
-            recebe()
+            print('\n========== Erro ao excluir números impares! ==========\n')
+            main()
             return 1
 
-    recebe()
+        try:
+            # Combina o número da lista com a quantidade de vezes que aparece
+            dicionario = {}
+            for n in lista:
+                y = 0
+                for k in lista:
+                    if(n == k):
+                        y += 1
+                dicionario[n] = y
+        except:
+            print('\n========== Erro ao combinar números com quantidades! ==========\n')
+            main()
+            return 1
+
+        try:
+            # Constroi um texto com o resultado do programa e exibe
+            if(len(dicionario) == 0):
+                print('\nNão foi digitado nenhum número par!\n')
+            elif(len(dicionario) == 1):
+                if(list(dicionario.values())[0] == 1):
+                    fim = str(list(dicionario.keys())[0]) + '!\n'
+                    print('\nO número par digitado foi o', fim)
+                else:
+                    print('\nO número par digitado foi o ' + str(list(dicionario.keys())[0]) + ' por ' + str(list(dicionario.values())[0]) + ' vezes!')
+            else:
+                texto = '\nOs nḿeros pares digitados foram '
+                for k, v in dicionario.items():
+                    if(k == list(dicionario.keys())[-1]):
+                        if(v == 1):
+                            texto = texto + str(k) + '!\n'
+                        else:
+                            texto = texto + str(k) + ' por ' + str(v) + ' vezes!\n'
+                    elif(k == list(dicionario.keys())[-2]):
+                        if(v == 1):
+                            texto = texto + str(k) + ' e '
+                        else:
+                            texto = texto + str(k) + ' por ' + str(v) + ' vezes e '
+                    else:
+                        if (v == 1):
+                            texto = texto + str(k) + ', '
+                        else:
+                            texto = texto + str(k) + ' por ' + str(v) + ' vezes, '
+                print(texto)
+            return 0
+        except:
+            print('\n ====== Erro ao cirar e exibir texto ======\n')
+            main()
+            return 1
+    main()
 
 
 def inicio():
@@ -1099,7 +1242,7 @@ def inicio():
     print('')
     print(" =============================== Exercícios de funçoes em Python ==============================")
     print('')
-    print("Os exercícios estão numerados de 1 a 17, digite o número do exercío para executar o mesmo, 'sair' para finalizar e 'ajuda' para obter ajuda")
+    print("Os exercícios estão numerados de 1 a 18, digite o número do exercío para executar o mesmo, 'sair' para finalizar e 'ajuda' para obter ajuda")
     print("")
     try:
         # Recebe um parâmetro informado pelo usuário
@@ -1163,6 +1306,9 @@ def inicio():
         inicio()
     elif(num == '18'):
         exercicio18(num)
+        inicio()
+    elif(num == '19'):
+        exercicio19(num)
         inicio()
     elif(num == 'sair'):
         exit(0)
