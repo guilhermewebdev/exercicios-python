@@ -1310,7 +1310,7 @@ def inicio():
     print('')
     print(" =============================== Exercícios de funçoes em Python ==============================")
     print('')
-    print("Os exercícios estão numerados de 1 a 18, digite o número do exercío para executar o mesmo, 'sair' para finalizar e 'ajuda' para obter ajuda")
+    print("Os exercícios estão numerados de 1 a 21, digite o número do exercío para executar o mesmo, 'sair' para finalizar e 'ajuda' para obter ajuda")
     print("")
     try:
         # Recebe um parâmetro informado pelo usuário
@@ -1388,7 +1388,70 @@ def inicio():
         exit(0)
         return 0
     elif(num == 'ajuda'):
-        print("Exercício 1: Algoritmo que contém uma função de nome 'estudo()' e que quando executada imprime a frase 'Estamos estudando funções'")
+        print('\n=================================================================== Exercícios de python ================================================================\n'
+              '\n1) Escreva um algoritmo que contenha uma função de nome estudo() e que quando executada imprima na saída padrão a frase "Estamos estudando as funções":'
+              '\n'
+              '\n2) Escreva um código contendo uma função de nome estudo e defina que a mesma deva receber um número como argumento. Chame este argumento de x.\n No corpo da função imprima a seguinte frase na tela: "Função invocada com sucesso. O valor passado pelo argumento x é: <valor de x>"'
+              '\n'
+              '\n3) Escreva um algoritmo que receba dois números através da declaração de dois parâmetros cujos nomes serão: x e y. No bloco de instrução faça a soma de ambos valores e imprima o resultado no monitor:'
+              '\n'
+              '\n4) Escreva um algoritmo contendo uma função que necessite de três argumentos. Em seguida, imprima na tela os argumentos em ordem ascendente e, por fim, imprima a média aritmética:'
+              '\n'
+              '\n5) Escreva uma função que contenha dois parâmetros. O primeiro deve ser obrigatório e o segundo facultativo:'
+              '\n'
+              '\n6) Escreva uma função que invocará outra função na qual tenha dois parâmetros definidos. Invoque a primeira função de ``func1()`` e a segunda de ``func2()``. \nEm seguida, invoque os parâmetros da segunda função de x e y. Some x e y e retorne o resultado. Em func1(), ao receber o resultado, retorne-o também como valor de retorno da função. \nPor fim, imprima na tela o valor que foi calculado por func2(), retornado para func1() e retornado a quem invocou a função inicialmente:'
+              '\n'
+              '\n7) Escreva um algoritmo capaz de receber uma quantidade variável de parâmetros. Em seguida, imprima os parâmetros recebidos na tela:'
+              '\n'
+              '\n8) Escreva um algoritmo capaz de receber uma quantidade variável de parâmetros que estejam associados a uma chave. Em seguida, imprima na tela o nome da chave e o respectivo valor:'
+              '\n'
+              '\n9) Considere o trecho de código a seguir.'
+              '\n'
+              '     def func(a, b, c, d):'
+              '         print(a+b+c+d)'
+              '     lista = 1, 2, 3, 4'
+              '\n'
+              '\nInvoque a função func(), passando como argumento os valores contidos em lista, com a respectiva ordem, de forma a utilizar o conceito de desempacotamento:'
+              '\n'
+              '\n10) Escreva um algoritmo que encontre o maior dentre 3 números. Para facilitar a resolução do exercício utilize funções.'
+              '\n'
+              '\n11) Escreva um função que some todos os números contidos numa lista.'
+              '\n'
+              '\n     Lista: (1, 2, 3, 4, 5)'
+              '\n     Soma: 15'
+              '\n'
+              '\n12) Escreva uma função que multiplique todos os números de uma lista.'
+              '\n'
+              '\nLista: (1, 2, 3, 4, 5)'
+              '\nMultiplicação: 120'
+              '\n'
+              '\n13) Escreva uma função que inverta a ordem dos elementos de uma lista manualmente. Não utilize a função interna do Python que faz inverção, crie o algoritmo que faça a inversão.'
+              '\n'
+              '\nLista: "1234abcd"'
+              '\nSaída: "dcba4321"'
+              '\n'
+              '\n14) Escreva uma função que calcule o fatorial de um número (um inteiro não negativo). Envie o valor do número que será calcula como argumento da função.'
+              '\n'
+              '\n15) Escreva uma função que verifique se um número está num intervalo determinado.'
+              '\n'
+              '\n16) Escreva uma função que aceite Strings e calcule a quantidade de letras em mauisculas e minúsculas que a String possui.'
+              '\n'
+              '\n17) Escreva uma função que receba como argumento uma lista que poderá ter valores duplicados e retorne uma nova lista sem que haja valores iguais.'
+              '\n'
+              '\nLista: [1,2,3,3,3,3,4,5]'
+              '\nRetorno: [1, 2, 3, 4, 5]'
+              '\n'
+              '\n18) Escreva uma função capaz de receber uma quantidade indeterminada de parâmetros e imprima na telas os números primos contidos nessa lista.'
+              '\n'
+              '\n19) Escreva uma função que imprima somente os números pares'
+              '\n'
+              '\nLista: [1, 2, 3, 4, 5, 6, 7, 8, 9]'
+              '\nSaída: [2, 4, 6, 8]'
+              '\n'
+              '\n20) Escreva uma função que verifica se uma String enviada é um palíndromo ou não.'
+              '\n'
+              '\n21) Escreva uma função que tenha definida uma função em seu escopo. Invoque a função aninhada, retorne algum valor, imprima esse valor na tela e finalize a aplicação.')
+
         inicio()
     else:
         print("\n============ Digite apenas valores válidos! ==========\n")
