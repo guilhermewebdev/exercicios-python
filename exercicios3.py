@@ -874,22 +874,24 @@ def exercicio17(num):
 
 
     def guia():
+        # Guia a execução do programa
         valor = 0
         x = 0
         lista = []
-        while(valor != ''):
-            valor = recebe(x)
-            conferido = confere(valor)
-            lista = insere(valor, conferido, lista)
+        while(valor != ''): # Pede para receber um valor até que seja nulo
+            valor = recebe(x) # Armazena o valor informado
+            conferido = confere(valor) # Envia o valor para ser conferido
+            lista = insere(valor, conferido, lista) # Insere o valor em uma lista
             if(valor == ''):
                 break
             x += 1
-        listaFiltrada = filtro(lista)
-        textoMontado = montaTexto(listaFiltrada)
-        exibe(textoMontado)
+        listaFiltrada = filtro(lista) # Envia a lista para ser filtrada
+        textoMontado = montaTexto(listaFiltrada) # Monta um texto de acordo com os valores da lista
+        exibe(textoMontado) # Exibe o texto
         return 0
 
     def recebe(x):
+        # Pede ao usuário para informar um parâmetro e retorna o valor
         try:
             if(x == 0):
                 valor = input('\nDigite um parâmetro para inserir a lista, ou enter para concluir: ')
@@ -901,6 +903,7 @@ def exercicio17(num):
             return 1
 
     def confere(valor):
+        # Confere se o valor informado está vazio
         try:
             if(valor == ''):
                 return 'vazio'
@@ -915,6 +918,7 @@ def exercicio17(num):
             return 1
 
     def insere(valor, conferido, lista):
+        # Insere os valores não vazios e sem erro em uma lista e a retorna
         try:
             if(conferido == 'vazio'):
                 return lista
@@ -929,6 +933,7 @@ def exercicio17(num):
             return 1
 
     def filtro(lista):
+        # Recebe uma lista e retorna outra sem números repetidos
         try:
             listaFiltrada = []
             for i in lista:
@@ -945,6 +950,7 @@ def exercicio17(num):
             return 1
 
     def montaTexto(listaFiltrada):
+        # Retorna um texto montado a partir de uma lista recebida
         try:
             if(listaFiltrada == []):
                 textoMontado = '\nA lista está vazia'
@@ -966,6 +972,7 @@ def exercicio17(num):
             return 1
 
     def exibe(texto):
+        # Exibe o texto recebido
         try:
             print(texto)
             return 0
@@ -1236,6 +1243,67 @@ def exercicio19(num):
             return 1
     main()
 
+def exercicio20(num):
+    print('')
+    print('')
+    print('')
+    print(" =============================== Exercício", num, "==============================")
+    print('')
+    print(" Verifica se o termo informado pelu usuário é um palindromo. ")
+    print("")
+
+    def main():
+        # Guia a execução do programa
+
+        while True:
+            try:
+                # Recebe o valor informado pelo usuário
+                valor = input('\nDigite uma expressão para ser verificada: ')
+                break
+            except:
+                print('\n ====== Erro ao capturar valor! Digite novamente! ========')
+
+        try:
+            # Deixa o valor inforado minusculo
+            valorMinusculo = valor.lower()
+        except:
+            print('\n ======= Erro ao tornar minuscula =========\n')
+            main()
+            return 1
+
+        try:
+            # Verifica se a string é igual a ela mesma invertida
+            if(valorMinusculo == valorMinusculo[::-1]):
+                print('\nA expressão informada é um palindromo!')
+                return 0
+            else:
+                print('\nA expressão informada não é um palindromo!\n')
+                return 0
+        except:
+            print('\n========= Erro ao verirficar se é palindromo! Digite novamente =========\n')
+            main()
+            return 1
+    main()
+
+def exercicio21(num):
+    print('')
+    print('')
+    print('')
+    print(" =============================== Exercício", num, "==============================")
+    print('')
+    print(" Verifica se o termo informado pelu usuário é um palindromo. ")
+    print("")
+
+    def main():
+        # Guia a execução do programa
+        def recebe():
+            try:
+                return input('\nDigite algum parâmetro para ser exibido: ')
+            except:
+                print('\n======= Erro ao receber parâmetro! Digite novamente! =======')
+        print('\n"' + recebe() + '"\n')
+        return 0
+    main()
 
 def inicio():
     print('')
@@ -1309,6 +1377,12 @@ def inicio():
         inicio()
     elif(num == '19'):
         exercicio19(num)
+        inicio()
+    elif(num == '20'):
+        exercicio20(num)
+        inicio()
+    elif(num == '21'):
+        exercicio21(num)
         inicio()
     elif(num == 'sair'):
         exit(0)
